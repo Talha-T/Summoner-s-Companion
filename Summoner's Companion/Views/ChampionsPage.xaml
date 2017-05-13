@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="Summoner_s_Companion.Views.ChampionsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:viewModels="clr-namespace:Summoner_s_Companion.ViewModels"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:staticDataEndpoint="clr-namespace:RiotSharp.StaticDataEndpoint;assembly=RiotSharp"
+             xmlns:converters="clr-namespace:Summoner_s_Companion.Converters"
+             mc:Ignorable="d"
+             d:DesignHeight="700" d:DesignWidth="1350">
+    <UserControl.DataContext>
+        <viewModels:ChampionsViewModel/>
+    </UserControl.DataContext>
+    <Grid x:Name="Grid">
+        <ProgressBar VerticalAlignment="Center" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignCircularProgressBar}" RenderTransformOrigin="0.5,0.5" IsIndeterminate="True" converters:VisibilityHelper.IsCollapsed="{Binding ChampionsLoaded}">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="10" ScaleX="10"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ListBox Padding="50,20" ItemsSource="{Binding Champions}" converters:VisibilityHelper.IsVisible="{Binding ChampionsLoaded}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel IsItemsHost="True"></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="staticDataEndpoint:ChampionStatic">
+                    <materialDesign:Card Padding="8" Margin="16">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="3*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="2*"></RowDefinition>
+                                <RowDefinition Height="2*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Ellipse Grid.Column="0" Height="64" Width="64" Grid.RowSpan="2">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{Binding Image.Full,Converter={StaticResource ChampionImageConverter}}"></ImageBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <TextBlock Padding="10,5" FontSize="14" Text="{Binding Name}" Grid.Row="0" Grid.Column="1"></TextBlock>
+                            <TextBlock Padding="10,5" FontWeight="Light" Text="{Binding Title}" Grid.Column="1" Grid.Row="1"></TextBlock>
+                            <TextBlock Padding="10,5" FontWeight="Light" Text="{Binding Tags,Converter={StaticResource ArrayToStringConverter}}" Grid.Row="2" Grid.Column="1"></TextBlock>
+                        </Grid>
+                    </materialDesign:Card>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</UserControl>

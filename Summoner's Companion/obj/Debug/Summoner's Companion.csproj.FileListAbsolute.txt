@@ -1,0 +1,43 @@
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\MaterialDesignColors.dll
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\MaterialDesignThemes.Wpf.dll
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\MaterialDesignThemes.Wpf.pdb
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\MaterialDesignThemes.Wpf.xml
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\MainWindow.baml
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\App.baml
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\MainWindow.g.cs
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\App.g.cs
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\Summoner_s_Companion.Properties.Resources.resources
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\Summoner's Companion.csproj.GenerateResource.Cache
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\SummonersCompanion.exe.config
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\SummonersCompanion.exe
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\SummonersCompanion.pdb
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\SummonersCompanion_MarkupCompile.cache
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\SummonersCompanion.g.resources
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\SummonersCompanion.exe
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\SummonersCompanion.pdb
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\Dragablz.dll
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\Dragablz.pdb
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\Dragablz.xml
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\Newtonsoft.Json.dll
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\RiotSharp.dll
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\System.Net.Http.Extensions.dll
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\System.Net.Http.Primitives.dll
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\System.Reactive.Core.dll
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\System.Reactive.Interfaces.dll
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\System.Reactive.Linq.dll
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\MaterialDesignColors.pdb
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\Newtonsoft.Json.xml
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\RiotSharp.xml
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\System.Net.Http.Extensions.xml
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\System.Net.Http.Primitives.xml
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\System.Reactive.Core.xml
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\System.Reactive.Interfaces.xml
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\bin\Debug\System.Reactive.Linq.xml
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\Summoner's Companion.csproj.App.config
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\SummonersCompanion_MarkupCompile.lref
+c:\users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\Summoner's Companion.csprojResolveAssemblyReference.cache
+C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\Views\FirstRunPage.baml
+C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\Views\FirstRunPage.g.cs
+C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\Views\ChampionsPage.g.cs
+C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\Views\ChampionsPage.baml
