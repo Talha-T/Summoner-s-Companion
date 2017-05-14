@@ -43,29 +43,26 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-                    <ContentControl x:Name="ContentControl">
-                        <materialDesign:Transitioner x:Name="Transitioner" SelectedIndex="0">
-                            <dragablz:TabablzControl>
-                                <TabItem Header="Summoners">
-                                </TabItem>
-                                <TabItem Header="Champions">
-                                    <views:ChampionsPage></views:ChampionsPage>
-                                </TabItem>
-                                <TabItem Header="Runes &amp; Masteries">
+                <ContentControl x:Name="ContentControl" Grid.RowSpan="2">
+                    <materialDesign:Transitioner x:Name="Transitioner" SelectedIndex="0">
+                        <dragablz:TabablzControl>
+                            <TabItem Header="Summoners">
+                            </TabItem>
+                            <TabItem Header="Champions">
+                                <views:ChampionsPage></views:ChampionsPage>
+                            </TabItem>
+                            <TabItem Header="Runes &amp; Masteries">
 
-                                </TabItem>
-                                <TabItem Header="Items">
+                            </TabItem>
+                            <TabItem Header="Items">
 
-                                </TabItem>
-                            </dragablz:TabablzControl>
-                            <views:FirstRunPage></views:FirstRunPage>
-                        </materialDesign:Transitioner>
-                    </ContentControl>
-                </ScrollViewer>
-
+                            </TabItem>
+                        </dragablz:TabablzControl>
+                        <views:FirstRunPage></views:FirstRunPage>
+                    </materialDesign:Transitioner>
+                </ContentControl>
                 <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}" x:Name="MainSnackbar"
                                          Grid.Row="1" />
             </Grid>

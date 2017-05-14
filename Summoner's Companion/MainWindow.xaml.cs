@@ -1,4 +1,6 @@
-﻿using Summoner_s_Companion.Properties;
+﻿using System;
+using System.Linq;
+using Summoner_s_Companion.Properties;
 using Summoner_s_Companion.Requestors;
 
 namespace Summoner_s_Companion
@@ -19,7 +21,8 @@ namespace Summoner_s_Companion
             {
                 Settings.Default.Save();
             };
-            if (Variables.FirstRun)
+            var cmdArgs = Environment.GetCommandLineArgs();
+            if (Variables.FirstRun || cmdArgs.Contains("firstrun"))
             {
                 Transitioner.SelectedIndex = 1;
             }
