@@ -3,8 +3,8 @@
 > Inspired From Mobile Summoner's Companion
 
 Features:
-* Summoner Profile & Recent Games - Implementing
-* All Champions And Their Data - Not Started
+* Summoner Profile & Recent Games - Not Started
+* All Champions And Their Data - Implementing
 * Items, Runes & Masteries - Not Started
 * Ping Check - Not Started
 
