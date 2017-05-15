@@ -11,7 +11,14 @@ namespace Summoner_s_Companion
     /// <summary>
     /// App.xaml etkileşim mantığı
     /// </summary>
-    public partial class App : Application
+    public partial class App
     {
+
+        private App()
+        {
+            Resources = base.Resources;
+        }
+
+        public new static ResourceDictionary Resources;
     }
 }

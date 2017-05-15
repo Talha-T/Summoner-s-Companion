@@ -4,16 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModels="clr-namespace:Summoner_s_Companion.ViewModels"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:staticDataEndpoint="clr-namespace:RiotSharp.StaticDataEndpoint;assembly=RiotSharp"
              xmlns:converters="clr-namespace:Summoner_s_Companion.Converters"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:summonerSCompanion="clr-namespace:Summoner_s_Companion"
              mc:Ignorable="d"
              d:DesignHeight="606" d:DesignWidth="1347" x:Name="Root">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Flipper.xaml" />
-                
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -32,7 +32,7 @@
             </ProgressBar.RenderTransform>
         </ProgressBar>
         <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" CanContentScroll="True">
-            <ListBox Padding="70,25" Grid.IsSharedSizeScope="True" ItemsSource="{Binding Champions}" Height="{Binding ElementName=Root,Path=ActualHeight}"
+            <ListBox Padding="70,25,30,25" Grid.IsSharedSizeScope="True" ItemsSource="{Binding Champions}" Height="{Binding ElementName=Root,Path=ActualHeight}"
                      converters:VisibilityHelper.IsVisible="{Binding ChampionsLoaded}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -41,42 +41,35 @@
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate DataType="staticDataEndpoint:ChampionStatic">
-                        <materialDesign:Card Padding="8" Margin="16">
-                            <materialDesign:TransitioningContent OpeningEffectsOffset="{materialDesign:IndexedItemOffsetMultiplierExtension 0:0:0.1}">
-                                <materialDesign:TransitioningContent.OpeningEffects>
-                                    <materialDesign:TransitionEffect Kind="SlideInFromRight" Duration="0:0:0.150" />
-                                    <materialDesign:TransitionEffect Kind="FadeIn" Duration="0:0:0.150" />
-                                </materialDesign:TransitioningContent.OpeningEffects>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" SharedSizeGroup="Group1"></ColumnDefinition>
-                                        <ColumnDefinition Width="3*" SharedSizeGroup="Group2"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" SharedSizeGroup="Group1"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="4*"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Ellipse Height="64" Width="64">
+                                <Ellipse.Fill>
+                                    <ImageBrush
+                                            ImageSource="{Binding Image.Full,Converter={StaticResource ChampionImageConverter}}">
+                                    </ImageBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom" Padding="10,5" FontSize="14" Text="{Binding Name}" Grid.Row="1"></TextBlock>
+                            <Grid.ToolTip>
+                                <Grid Resources="{x:Static summonerSCompanion:App.Resources}">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*"></RowDefinition>
-                                        <RowDefinition Height="2*"></RowDefinition>
-                                        <RowDefinition Height="2*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
                                     </Grid.RowDefinitions>
-                                    <Ellipse Grid.Column="0" Height="64" Width="64" Grid.RowSpan="2">
-                                        <Ellipse.Fill>
-                                            <ImageBrush
-                                            ImageSource="{Binding Image.Full,Converter={StaticResource ChampionImageConverter}}">
-                                            </ImageBrush>
-                                        </Ellipse.Fill>
-                                    </Ellipse>
-                                    <TextBlock Padding="10,5" FontSize="14" Text="{Binding Name}" Grid.Row="0"
-                                           Grid.Column="1">
-                                    </TextBlock>
-                                    <TextBlock Padding="10,5" FontWeight="Light" Text="{Binding Title}" Grid.Column="1"
-                                           Grid.Row="1">
-                                    </TextBlock>
-                                    <TextBlock Padding="10,5" FontWeight="Light"
-                                           Text="{Binding Tags,Converter={StaticResource ArrayToStringConverter}}"
-                                           Grid.Row="2" Grid.Column="1">
-                                    </TextBlock>
+                                    <TextBlock Text="{Binding Name}" FontSize="14" Padding="5"></TextBlock>
+                                    <TextBlock Text="{Binding Title}" Grid.Row="1" Padding="5"></TextBlock>
+                                    <TextBlock Text="{Binding Tags,Converter={StaticResource ArrayToStringConverter}}" Grid.Row="2" Padding="5"></TextBlock>
                                 </Grid>
-                            </materialDesign:TransitioningContent>
-                        </materialDesign:Card>
+                            </Grid.ToolTip>
+                        </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
