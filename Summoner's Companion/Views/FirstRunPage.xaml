@@ -30,12 +30,9 @@
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            <ComboBox Margin="0,20,0,0" HorizontalAlignment="Center" FontSize="23" materialDesign:HintAssist.Hint="Your Region" ItemsSource="{Binding Regions}" Text="{Binding Region,UpdateSourceTrigger=PropertyChanged}"></ComboBox>
-            <Button x:Name="SaveButton" Margin="0,20,0,0" HorizontalAlignment="Center" FontSize="25" Height="40" Command="Save">SAVE
-                <Button.CommandBindings>
-                    <CommandBinding Command="Save" 
-                                    Executed="Save_Executed" CanExecute="Save_CanExecute"/>
-                </Button.CommandBindings>
+            <ComboBox Margin="0,20,0,0" SelectionChanged="RegionsComboBox_OnSelectionChanged" x:Name="RegionsComboBox" HorizontalAlignment="Center" FontSize="23" materialDesign:HintAssist.Hint="Your Region" ItemsSource="{Binding Regions}" Text="{Binding Region,UpdateSourceTrigger=PropertyChanged}"></ComboBox>
+            <ComboBox Margin="0,20,0,0" HorizontalAlignment="Center" FontSize="23" materialDesign:HintAssist.Hint="Your Language" ItemsSource="{Binding Languages}" Text="{Binding Lang,UpdateSourceTrigger=PropertyChanged}"></ComboBox>
+            <Button x:Name="SaveButton" Margin="0,20,0,0" HorizontalAlignment="Center" FontSize="25" Height="40" Command="{Binding SaveCommand}">SAVE
             </Button>
             <ProgressBar Visibility="Hidden" x:Name="ProgressBar" IsIndeterminate="True" Style="{DynamicResource MaterialDesignCircularProgressBar}" Margin="0,20,0,0" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                 <ProgressBar.RenderTransform>

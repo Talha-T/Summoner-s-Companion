@@ -1,4 +1,8 @@
 ﻿using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using RiotSharp.StaticDataEndpoint;
 using Summoner_s_Companion.ViewModels;
 
 namespace Summoner_s_Companion.Views
@@ -15,5 +19,11 @@ namespace Summoner_s_Companion.Views
             Task.Run(() => viewModel.GetChampions());
         }
 
+        private void ListBox_Click(object sender, MouseButtonEventArgs e)
+        {
+            var item = (FrameworkElement)e.OriginalSource;
+            var champ = (ChampionStatic)item.DataContext;
+            MainWindow.NavigateTo(new ChampionPage(champ));
+        }
     }
 }

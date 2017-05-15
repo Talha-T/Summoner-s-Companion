@@ -41,3 +41,5 @@ C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companio
 C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\Views\ChampionsPage.g.cs
 C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\Views\ChampionsPage.baml
+C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\Views\ChampionPage.g.cs
+C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\Views\ChampionPage.baml

@@ -14,8 +14,8 @@ namespace Summoner_s_Companion.ViewModels
         public async Task GetChampions()
         {
             var api = StaticRiotApi.GetInstance(Resources.apiKey);
-            var champions = await api.GetChampionsAsync(Variables.Region, ChampionData.all);
-            Champions = champions.Champions.Values.ToList().OrderBy(x => x.Name).ToList();
+            var champions = await api.GetChampionsAsync(Variables.Region, ChampionData.all, Variables.Language);
+            Champions = champions.Champions.Values.OrderBy(x => x.Name).ToList();
             ChampionsLoaded = true;
         }
 

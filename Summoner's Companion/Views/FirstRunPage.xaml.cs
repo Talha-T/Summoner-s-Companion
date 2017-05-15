@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using RiotSharp;
 using Summoner_s_Companion.Annotations;
 using System.Windows.Input;
+using Summoner_s_Companion.Models;
 using Summoner_s_Companion.Requestors;
 
 namespace Summoner_s_Companion.Views
@@ -19,6 +20,7 @@ namespace Summoner_s_Companion.Views
     {
         public FirstRunPage()
         {
+            SaveCommand = new RelayCommand(Save_Execute,Save_CanExecute);
             InitializeComponent();
         }
 
@@ -46,8 +48,19 @@ namespace Summoner_s_Companion.Views
             }
         }
 
+        private Language _language;
 
+        public Language Lang
+        {
+            get => _language;
+            set
+            {
+                _language = value;
+                OnPropertyChanged();
+            }
+        }
 
+        public IEnumerable<Language> Languages => Enum.GetValues(typeof(Language)).Cast<Language>();
 
         public List<Region> Regions
         {
@@ -69,7 +82,7 @@ namespace Summoner_s_Companion.Views
 
         private bool _check;
 
-        private async void Save_Executed(object sender, ExecutedRoutedEventArgs e)
+        private async void Save_Execute()
         {
             ProgressBar.Visibility = Visibility.Visible;
             SaveButton.Visibility = Visibility.Collapsed;
@@ -89,15 +102,22 @@ namespace Summoner_s_Companion.Views
             }
         }
 
-        private void Save_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        private bool Save_CanExecute()
         {
             if (_check)
                 NotFoundValidationRule.IsValid = true;
             var bindingExpression = SummonerNameTextBox.GetBindingExpression(TextBox.TextProperty);
             if (bindingExpression != null)
-                e.CanExecute = !bindingExpression.HasValidationError;
-            else
-                throw new NullReferenceException();
+                return !bindingExpression.HasValidationError;
+            throw new NullReferenceException();
         }
+
+        private void RegionsComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            NotFoundValidationRule.IsValid = true;
+            SummonerNameTextBox.Text = SummonerNameTextBox.Text;
+        }
+
+        public ICommand SaveCommand { get; }
     }
 }

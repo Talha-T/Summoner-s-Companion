@@ -58,5 +58,17 @@ namespace Summoner_s_Companion.Properties {
                 this["Region"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("en_US")]
+        public global::RiotSharp.Language Language {
+            get {
+                return ((global::RiotSharp.Language)(this["Language"]));
+            }
+            set {
+                this["Language"] = value;
+            }
+        }
     }
 }

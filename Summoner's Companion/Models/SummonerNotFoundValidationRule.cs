@@ -21,7 +21,11 @@ namespace Summoner_s_Companion.Models
         public bool IsValid
         {
             get => _isValid;
-            set { _isValid = value; OnPropertyChanged(); }
+            set
+            {
+                _isValid = value;
+                OnPropertyChanged();
+            }
         }
 
 

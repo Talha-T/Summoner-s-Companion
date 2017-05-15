@@ -105,12 +105,17 @@
     <Compile Include="Converters\VisibilityHelper.cs" />
     <Compile Include="Models\LengthValidationRule.cs" />
     <Compile Include="Models\NavigationBarItem.cs" />
+    <Compile Include="Models\RelayCommand.cs" />
     <Compile Include="Models\SummonerNotFoundValidationRule.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Requestors\SummonerRequestor.cs" />
     <Compile Include="Requestors\Variables.cs" />
     <Compile Include="ViewModels\ChampionsViewModel.cs" />
+    <Compile Include="ViewModels\ChampionViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\ChampionPage.xaml.cs">
+      <DependentUpon>ChampionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ChampionsPage.xaml.cs">
       <DependentUpon>ChampionsPage.xaml</DependentUpon>
     </Compile>
@@ -129,6 +134,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ChampionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ChampionsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

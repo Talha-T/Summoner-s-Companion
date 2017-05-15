@@ -11,5 +11,8 @@
     <Setting Name="Region" Type="RiotSharp.Region" Scope="User">
       <Value Profile="(Default)">euw</Value>
     </Setting>
+    <Setting Name="Language" Type="RiotSharp.Language" Scope="User">
+      <Value Profile="(Default)">en_US</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

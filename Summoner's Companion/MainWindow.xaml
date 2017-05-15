@@ -60,6 +60,7 @@
 
                             </TabItem>
                         </dragablz:TabablzControl>
+                        <UserControl x:Name="PageToNavigate"></UserControl>
                         <views:FirstRunPage></views:FirstRunPage>
                     </materialDesign:Transitioner>
                 </ContentControl>

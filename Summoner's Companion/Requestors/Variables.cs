@@ -27,5 +27,11 @@ namespace Summoner_s_Companion.Requestors
             set => Default.Region = value;
         }
 
+        public static Language Language
+        {
+            get => Default.Language;
+            set => Default.Language = value;
+        }
+
     }
 }
