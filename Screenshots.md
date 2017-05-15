@@ -3,7 +3,7 @@
 ## v0.0.5
 
 ![Champions Overview](/img/champions.PNG?raw=true)
-![First Run Page](img/firstrun.PNG?raw=true
+![First Run Page](img/firstrun.PNG?raw=true)
 
 ## v0.0.6
 
