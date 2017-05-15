@@ -10,6 +10,6 @@ Features:
 
 # Other Resources:
 
-* [Screenshots](/screenshots.md)
-* [Changelog](/changelog.md)
+* [Screenshots](/Screenshots.md)
+* [Changelog](/Changelog.md)
 
