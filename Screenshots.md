@@ -12,4 +12,4 @@
 
 ## v0.0.7.1
 
-![First Run Page](img/firstrun_0.0.7?raw=true)
+![First Run Page](img/firstrun_0.0.7.PNG?raw=true)
