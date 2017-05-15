@@ -17,3 +17,4 @@
 ## v0.0.7
 * First Run Page Behaviour Bug Fixes
 * Navigation System
+* Static Data Language Support
