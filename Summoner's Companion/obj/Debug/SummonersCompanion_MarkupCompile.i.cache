@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\App.xaml
-4-523537838
+6-374871518
 
-251342243696
+301384947908
 75495781639
-MainWindow.xaml;Views\ChampionPage.xaml;Views\ChampionsPage.xaml;Views\FirstRunPage.xaml;
+ImageDialog.xaml;MainWindow.xaml;MessageDialog.xaml;Views\ChampionPage.xaml;Views\ChampionsPage.xaml;Views\FirstRunPage.xaml;
 
-True
+False
 

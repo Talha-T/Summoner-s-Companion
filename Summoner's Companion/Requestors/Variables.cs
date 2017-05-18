@@ -1,4 +1,6 @@
-﻿using RiotSharp;
+﻿using Newtonsoft.Json;
+using RiotSharp;
+using Summoner_s_Companion.Models;
 using Summoner_s_Companion.Properties;
 using static Summoner_s_Companion.Properties.Settings;
 
@@ -12,25 +14,56 @@ namespace Summoner_s_Companion.Requestors
         public static bool FirstRun
         {
             get => Default.FirstRun;
-            set => Default.FirstRun = value;
+            set
+            {
+                Default.FirstRun = value;
+                Save();
+            }
         }
 
         public static string SummonerName
         {
             get => Default.SummonerName;
-            set => Default.SummonerName = value;
+            set
+            {
+                Default.SummonerName = value;
+                Save();
+            }
         }
 
         public static Region Region
         {
             get => Default.Region;
-            set => Default.Region = value;
+            set
+            {
+                Default.Region = value;
+                Save();
+            }
         }
 
         public static Language Language
         {
             get => Default.Language;
-            set => Default.Language = value;
+            set
+            {
+                Default.Language = value;
+                Save();
+            }
+        }
+
+        public static ChampionStaticCollection Champions
+        {
+            get => JsonConvert.DeserializeObject<ChampionStaticCollection>(Default.Champions);
+            set
+            {
+                Default.Champions = JsonConvert.SerializeObject(value);
+                Save();
+            }
+        }
+
+        private static void Save()
+        {
+            Default.Save();
         }
 
     }

@@ -97,7 +97,9 @@ namespace Summoner_s_Companion.Views
             }
             else
             {
-                Variables.FirstRun = false;
+                Variables.SummonerName = SummonerName;
+                Variables.Region = Region;
+                Variables.Language = Lang;
                 MainWindow.Instance.Transitioner.SelectedIndex = 0;
             }
         }

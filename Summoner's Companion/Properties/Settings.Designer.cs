@@ -25,7 +25,7 @@ namespace Summoner_s_Companion.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool FirstRun {
             get {
                 return ((bool)(this["FirstRun"]));
@@ -68,6 +68,18 @@ namespace Summoner_s_Companion.Properties {
             }
             set {
                 this["Language"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Champions {
+            get {
+                return ((string)(this["Champions"]));
+            }
+            set {
+                this["Champions"] = value;
             }
         }
     }

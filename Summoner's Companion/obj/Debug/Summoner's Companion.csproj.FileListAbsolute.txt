@@ -43,3 +43,7 @@ C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companio
 C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\Views\ChampionsPage.baml
 C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\Views\ChampionPage.g.cs
 C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\Views\ChampionPage.baml
+C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\ImageDialog.baml
+C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\ImageDialog.g.cs
+C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\MessageDialog.baml
+C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\MessageDialog.g.cs

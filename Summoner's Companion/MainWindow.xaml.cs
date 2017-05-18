@@ -1,6 +1,8 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Windows.Controls;
+using MaterialDesignThemes.Wpf;
 using Summoner_s_Companion.Properties;
 using Summoner_s_Companion.Requestors;
 
@@ -20,13 +22,17 @@ namespace Summoner_s_Companion
             Instance = this;
             Closing += delegate
             {
-                Settings.Default.Save();
+                if (Variables.FirstRun)
+                    Variables.FirstRun = false;
             };
             var cmdArgs = Environment.GetCommandLineArgs();
+            Settings.Default.Upgrade();
             if (Variables.FirstRun || cmdArgs.Contains("firstrun"))
             {
                 Transitioner.SelectedIndex = 2;
             }
+            if (!Directory.Exists("Downloads/Splashes"))
+                Directory.CreateDirectory("Downloads/Splashes");
         }
 
         public static void NavigateTo(UserControl control)
@@ -35,6 +41,14 @@ namespace Summoner_s_Companion
             Instance.Transitioner.SelectedIndex = 1;
         }
 
+        public static void NavigateToIndex(int index)
+        {
+            Instance.Transitioner.SelectedIndex = index;
+        }
 
+        public static async void ShowDialog(object content)
+        {
+            await DialogHost.Show(content);
+        }
     }
 }

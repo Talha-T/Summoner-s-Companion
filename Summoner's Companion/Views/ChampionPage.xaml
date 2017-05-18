@@ -3,13 +3,230 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:viewModels="clr-namespace:Summoner_s_Companion.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="606" d:DesignWidth="1347" >
+             d:DesignHeight="606" d:DesignWidth="1347">
     <UserControl.DataContext>
-        <viewModels:ChampionViewModel x:Name="ViewModel"></viewModels:ChampionViewModel>
+        <viewModels:ChampionViewModel x:Name="ChampionViewModel"></viewModels:ChampionViewModel>
     </UserControl.DataContext>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ProgressBar.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
-            
+        <dragablz:TabablzControl>
+            <TabItem Header="General">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="168"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"></RowDefinition>
+                        <RowDefinition Height="4*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Rectangle ToolTip="Click To Toggle Rectangle/Ellipse&#10;Double Click To Toggle Splash/Small" MouseDown="ChampionImageRectangle_OnMouseDown" x:Name="ChampionImageRectangle" RadiusX="100" RadiusY="100" Width="120" Height="120" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,48,0,0">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="{Binding Champion.Image.Full,Converter={StaticResource ChampionImageConverter}}"></ImageBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <StackPanel Grid.Row="0" Grid.Column="1" Margin="30,70">
+                        <TextBlock Style="{StaticResource MaterialDesignTitleTextBlock}" Text="{Binding Champion.Name}"></TextBlock>
+                        <TextBlock Margin="0,5,0,0" Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="{Binding Champion.Title}"></TextBlock>
+                        <TextBlock Margin="0,5,0,0" Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="{Binding Champion.Tags,Converter={StaticResource ArrayToStringConverter}}"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Grid.Row="0" Grid.Column="2" Margin="30,80" VerticalAlignment="Top" Orientation="Horizontal">
+                        <Grid HorizontalAlignment="Left" Width="50" Height="50" ToolTip="Attack">
+                            <ProgressBar Height="50" Width="50" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="{Binding Champion.Info.Attack}" Maximum="10.1" x:Name="AttackProgress"></ProgressBar>
+                            <TextBlock Text="{Binding ElementName=AttackProgress,Path=Value}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                        <Grid Width="50" Height="50" Margin="10,0" ToolTip="Magic">
+                            <ProgressBar Foreground="#9C27B0" Height="50" Width="50" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="{Binding Champion.Info.Magic}" Maximum="10.1" x:Name="MagicProgress"></ProgressBar>
+                            <TextBlock Text="{Binding ElementName=MagicProgress,Path=Value}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                        <Grid Width="50" Height="50" Margin="10,0" ToolTip="Defense">
+                            <ProgressBar Foreground="#4CAF50" Height="50" Width="50" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="{Binding Champion.Info.Defense}" Maximum="10.1" x:Name="DefenseProgress"></ProgressBar>
+                            <TextBlock Text="{Binding ElementName=DefenseProgress,Path=Value}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                        <Grid Width="50" Height="50" Margin="10,0" ToolTip="Difficulty">
+                            <ProgressBar Foreground="#3F51B5" Height="50" Width="50" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="{Binding Champion.Info.Difficulty}" Maximum="10.1" x:Name="DifficultyProgress"></ProgressBar>
+                            <TextBlock Text="{Binding ElementName=DifficultyProgress,Path=Value}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Margin="10,70" Grid.Row="0" Grid.Column="3">
+                        <Button x:Name="LoreButton" Click="LoreButton_OnClick">LORE</Button>
+                            <Button Margin="0,10" x:Name="BlorbButton" Click="BlorbButton_OnClick">BLORB</Button>
+                    </StackPanel>
+                        <TextBlock Margin="10,70" Grid.Column="4" Grid.Row="0">
+                        Uses <Run FontWeight="Bold" Text="{Binding Champion.Partype}"></Run><LineBreak/> to cast spells
+                        </TextBlock>
+                    <TextBlock Grid.Column="5" Grid.Row="0" Margin="20,200" FontSize="13">PL = Per Level</TextBlock>
+                        <StackPanel Orientation="Horizontal" Grid.Column="5" Grid.Row="0">
+                            <StackPanel Orientation="Vertical" Margin="20,70" MaxWidth="300">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold">Armor</TextBlock>
+                                    <TextBlock Margin="10,0">
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} ({1} PL)">
+                                                <Binding Path="Champion.Stats.Armor"></Binding>
+                                                <Binding Path="Champion.Stats.ArmorPerLevel"></Binding>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel Margin="0,10" Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold">Magic Resist</TextBlock>
+                                    <TextBlock Margin="10,0">
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} ({1} PL)">
+                                                <Binding Path="Champion.Stats.SpellBlock"></Binding>
+                                                <Binding Path="Champion.Stats.SpellBlockPerLevel"></Binding>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel Margin="0,0" Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold">Health</TextBlock>
+                                    <TextBlock Margin="10,0">
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} ({1} PL)">
+                                                <Binding Path="Champion.Stats.Hp"></Binding>
+                                                <Binding Path="Champion.Stats.HpPerLevel"></Binding>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel Margin="0,10" Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold">Health Generation</TextBlock>
+                                    <TextBlock Margin="10,0">
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} ({1} PL)">
+                                                <Binding Path="Champion.Stats.HpRegen"></Binding>
+                                                <Binding Path="Champion.Stats.HpRegenPerLevel"></Binding>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel Margin="0,0" Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold">Mana</TextBlock>
+                                    <TextBlock Margin="10,0">
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} ({1} PL)">
+                                                <Binding Path="Champion.Stats.Mp"></Binding>
+                                                <Binding Path="Champion.Stats.MpPerLevel"></Binding>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Margin="30,70">
+                                <StackPanel Margin="0,0" Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold">Attack Damage</TextBlock>
+                                    <TextBlock Margin="10,0" Text="{Binding Champion.Stats.AttackDamage}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Margin="0,10" Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold">Attack Speed</TextBlock>
+                                    <TextBlock Margin="10,0">
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} ({1} PL)">
+                                                <Binding Path="Champion.Stats.AttackSpeedOffset" Converter="{StaticResource AttackSpeedConverter}"></Binding>
+                                                <Binding Path="Champion.Stats.AttackSpeedPerLevel"></Binding>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel Margin="0,0" Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold">Mana Generation</TextBlock>
+                                    <TextBlock Margin="10,0">
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} ({1} PL)">
+                                                <Binding Path="Champion.Stats.MpRegen"></Binding>
+                                                <Binding Path="Champion.Stats.MpRegenPerLevel"></Binding>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel Margin="0,10" Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold">Movement Speed</TextBlock>
+                                    <TextBlock Margin="10,0" Text="{Binding Champion.Stats.MoveSpeed}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Margin="0,0" Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold">Attack Range</TextBlock>
+                                    <TextBlock Margin="10,0" Text="{Binding Champion.Stats.AttackRange}"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1" Margin="30" MaxWidth="1300">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" VerticalAlignment="Top" Margin="0,-150,0,0">
+                            <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource MaterialDesignTitleTextBlock}"
+                                               Text="{Binding Path=Champion.Name,StringFormat={}If you are {0}:}"
+                                               Padding="5">
+                                    </TextBlock>
+                                    <ListBox ItemsSource="{Binding Champion.AllyTips}" Padding="10"></ListBox>
+                                </StackPanel>
+
+                            </ScrollViewer>
+                        </Grid>
+                        <Grid Grid.Column="1" VerticalAlignment="Top" Margin="30,-150,0,0">
+                            <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource MaterialDesignTitleTextBlock}"
+                                           Text="{Binding Path=Champion.Name,StringFormat={}If you are playing against {0}:}" Padding="5">
+                                    </TextBlock>
+                                    <ListBox ItemsSource="{Binding Champion.EnemyTips}" Padding="10"></ListBox>
+
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Spells"></TabItem>
+            <TabItem Header="Builds"></TabItem>
+            <TabItem Header="Counters"></TabItem>
+            <TabItem Header="Skins"></TabItem>
+        </dragablz:TabablzControl>
+        <Button x:Name="BackButton" Style="{StaticResource MaterialDesignFloatingActionButton}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,16,16" Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}">
+            <materialDesign:PackIcon Kind="ArrowLeftBold"></materialDesign:PackIcon>
+        </Button>
     </Grid>
 </UserControl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

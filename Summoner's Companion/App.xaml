@@ -18,6 +18,8 @@
             <Style TargetType="{x:Type dragablz:TabablzControl}" BasedOn="{StaticResource MaterialDesignTabablzControlStyle}" />
             <converters:ChampionImageConverter x:Key="ChampionImageConverter"></converters:ChampionImageConverter>
             <converters:ArrayToStringConverter x:Key="ArrayToStringConverter"></converters:ArrayToStringConverter>
+            <converters:SplashImageConverter x:Key="SplashImageConverter"></converters:SplashImageConverter>
+            <converters:AttackSpeedConverter x:Key="AttackSpeedConverter"></converters:AttackSpeedConverter>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

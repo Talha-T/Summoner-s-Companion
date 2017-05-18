@@ -47,26 +47,42 @@
                 </Grid.RowDefinitions>
                 <ContentControl x:Name="ContentControl" Grid.RowSpan="2">
                     <materialDesign:Transitioner x:Name="Transitioner" SelectedIndex="0">
-                        <dragablz:TabablzControl>
-                            <TabItem Header="Summoners">
-                            </TabItem>
-                            <TabItem Header="Champions">
-                                <views:ChampionsPage></views:ChampionsPage>
-                            </TabItem>
-                            <TabItem Header="Runes &amp; Masteries">
+                        <materialDesign:TransitionerSlide>
+                            <materialDesign:TransitionerSlide.BackwardWipe>
+                                <materialDesign:CircleWipe></materialDesign:CircleWipe>
+                            </materialDesign:TransitionerSlide.BackwardWipe>
+                            <dragablz:TabablzControl>
+                                <TabItem Header="Summoners">
+                                </TabItem>
+                                <TabItem Header="Champions">
+                                    <views:ChampionsPage></views:ChampionsPage>
+                                </TabItem>
+                                <TabItem Header="Runes &amp; Masteries">
 
-                            </TabItem>
-                            <TabItem Header="Items">
+                                </TabItem>
+                                <TabItem Header="Items">
 
-                            </TabItem>
-                        </dragablz:TabablzControl>
-                        <UserControl x:Name="PageToNavigate"></UserControl>
-                        <views:FirstRunPage></views:FirstRunPage>
+                                </TabItem>
+                            </dragablz:TabablzControl>
+                        </materialDesign:TransitionerSlide>
+                        <materialDesign:TransitionerSlide>
+                            <materialDesign:TransitionerSlide.BackwardWipe>
+                                <materialDesign:CircleWipe></materialDesign:CircleWipe>
+                            </materialDesign:TransitionerSlide.BackwardWipe>
+                            <UserControl x:Name="PageToNavigate"></UserControl>
+                        </materialDesign:TransitionerSlide>
+                        <materialDesign:TransitionerSlide>
+                            <materialDesign:TransitionerSlide.BackwardWipe>
+                                <materialDesign:CircleWipe></materialDesign:CircleWipe>
+                            </materialDesign:TransitionerSlide.BackwardWipe>
+                            <views:FirstRunPage></views:FirstRunPage>
+                        </materialDesign:TransitionerSlide>
                     </materialDesign:Transitioner>
                 </ContentControl>
                 <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}" x:Name="MainSnackbar"
                                          Grid.Row="1" />
             </Grid>
         </DockPanel>
+        <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding ElementName=MainSnackbar,Path=MessageQueue}" x:Name="RootDialog" CloseOnClickAway="True"></materialDesign:DialogHost>
     </Grid>
 </Window>
