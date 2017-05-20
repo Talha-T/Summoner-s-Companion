@@ -1,6 +1,6 @@
 # Screenshots:
 
-## v0.1.0
+## v0.2.0
 
 ## Champions
 ![Overview](/img/champions_0.2.0.PNG?raw=true)
