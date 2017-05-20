@@ -17,5 +17,3 @@
 
 ## Items
 ![Items](/img/items.PNG?raw=true)
-=======
-![First Run Page](img/firstrun_0.0.7.PNG?raw=true)
