@@ -60,7 +60,7 @@ namespace Summoner_s_Companion.Views
                 return;
             PingChecking = true;
             var url = region + ".leagueoflegends.com";
-            IPAddress address = null;
+            IPAddress address;
             try
             {
                 address = Dns.GetHostAddresses(url)[0];
@@ -83,7 +83,7 @@ namespace Summoner_s_Companion.Views
             var minPing = enumerable.Min();
             var averagePing = enumerable.Average();
             var packetLoss = pings.Count(x => x.Status != IPStatus.Success);
-            var packetLossPercentage = packetLoss / pings.Length * 100;
+            var packetLossPercentage = (packetLoss / pings.Length) * 100;
             PingChecking = false;
             var finalString =
                 $"We checked your ping for {pings.Length} times. Your minimum ping is {minPing}, maximum ping is {maxPing}, average ping is {averagePing}. Your packet loss is {packetLoss}/{pings.Length}; which is equal %{packetLossPercentage}. Good luck in your game.";
