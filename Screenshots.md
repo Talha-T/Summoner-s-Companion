@@ -10,7 +10,7 @@
 ![Spells](/img/champion_spells_2.PNG?raw=true)
 
 ## First Run
-![First Run Page](img/firstrun.PNG_0.0.7?raw=true)
+![First Run Page](img/firstrun_0.0.7.PNG?raw=true)
 
 ## Ping Check
 ![Checking](/img/pingcheck.PNG?raw=true)
