@@ -1,7 +1,8 @@
 # Screenshots:
 
-## v1.0.0
+## v0.1.0
 
+<<<<<<< HEAD
 ## Champions
 ![Overview](/img/champions_0.2.0.PNG?raw=true)
 ![Counters](/img/champion_counters.PNG?raw=true)
@@ -17,3 +18,7 @@
 
 ## Items
 ![Items](/img/items.PNG?raw=true)
+=======
+![Champions Overview](/img/champions_1.0.0.PNG?raw=true)
+![First Run Page](img/firstrun_0.0.7.PNG?raw=true)
+>>>>>>> origin/master
