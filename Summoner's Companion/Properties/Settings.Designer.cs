@@ -82,5 +82,17 @@ namespace Summoner_s_Companion.Properties {
                 this["Champions"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Items {
+            get {
+                return ((string)(this["Items"]));
+            }
+            set {
+                this["Items"] = value;
+            }
+        }
     }
 }

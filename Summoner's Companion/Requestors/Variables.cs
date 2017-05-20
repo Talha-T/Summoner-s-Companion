@@ -1,5 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 using RiotSharp;
+using RiotSharp.StaticDataEndpoint;
 using Summoner_s_Companion.Models;
 using Summoner_s_Companion.Properties;
 using static Summoner_s_Companion.Properties.Settings;
@@ -57,6 +59,19 @@ namespace Summoner_s_Companion.Requestors
             set
             {
                 Default.Champions = JsonConvert.SerializeObject(value);
+                Save();
+            }
+        }
+
+        private static List<ItemStatic> _items;
+
+        public static List<ItemStatic> Items
+        {
+            get => _items ?? JsonConvert.DeserializeObject<List<ItemStatic>>(Default.Items);
+            set
+            {
+                Default.Items = JsonConvert.SerializeObject(value);
+                _items = value;
                 Save();
             }
         }

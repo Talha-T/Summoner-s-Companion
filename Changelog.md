@@ -1,5 +1,13 @@
 # Changelog:
 
+## v0.2.0
+* Ping Check
+* Items
+* Champion Counters,Spells
+
+## v0.1.0
+* Champion Basic Overview Page
+
 ## v0.0.7
 * First Run Page Behaviour Bug Fixes
 * Navigation System

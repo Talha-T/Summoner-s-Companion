@@ -3,10 +3,15 @@
 > Inspired From Mobile Summoner's Companion
 
 Features:
-* Summoner Profile & Recent Games - Not Started
-* All Champions And Their Data - Implementing
-* Items, Runes & Masteries - Not Started
-* Ping Check - Not Started
+* Summoner Profile & Recent Games - NI
+* Champion Counters, Overview, Spells - I
+* Champion Skins - WIP
+* Ping Check - I
+* Items - I
+
+I = Implemented
+NI = Not Implemented
+WIP = Work In Progress
 
 # Other Resources:
 

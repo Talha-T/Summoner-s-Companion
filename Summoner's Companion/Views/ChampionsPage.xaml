@@ -35,7 +35,7 @@
             <TextBlock converters:VisibilityHelper.IsVisible="{x:Static requestors:Variables.FirstRun}" x:Name="FirstRun" Text="Please wait while we're getting champions. This is for only this session." FontSize="20" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,100"></TextBlock>
         </Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" CanContentScroll="True">
-            <ListBox Padding="70,25,30,25" Grid.IsSharedSizeScope="True" ItemsSource="{Binding Champions}" Height="{Binding ElementName=Root,Path=ActualHeight}"
+            <ListBox Grid.IsSharedSizeScope="True" Padding="70,25,30,25" ItemsSource="{Binding Champions}" Height="{Binding ElementName=Root,Path=ActualHeight}"
                      converters:VisibilityHelper.IsVisible="{Binding ChampionsLoaded}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>

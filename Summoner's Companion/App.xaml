@@ -20,6 +20,11 @@
             <converters:ArrayToStringConverter x:Key="ArrayToStringConverter"></converters:ArrayToStringConverter>
             <converters:SplashImageConverter x:Key="SplashImageConverter"></converters:SplashImageConverter>
             <converters:AttackSpeedConverter x:Key="AttackSpeedConverter"></converters:AttackSpeedConverter>
+            <converters:NameFlatConverter x:Key="NameFlatConverter"></converters:NameFlatConverter>
+            <converters:SpellImageConverter x:Key="SpellImageConverter"></converters:SpellImageConverter>
+            <converters:SkinImageConverter x:Key="SkinImageConverter"></converters:SkinImageConverter>
+            <converters:ItemImageConverter x:Key="ItemImageConverter"></converters:ItemImageConverter>
+            <converters:GreaterThanZeroConverter x:Key="GreaterThanZeroConverter"></converters:GreaterThanZeroConverter>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

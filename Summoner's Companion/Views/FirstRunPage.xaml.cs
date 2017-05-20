@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using RiotSharp;
 using Summoner_s_Companion.Annotations;
 using System.Windows.Input;
+using MaterialDesignThemes.Wpf;
 using Summoner_s_Companion.Models;
 using Summoner_s_Companion.Requestors;
 
@@ -20,7 +21,7 @@ namespace Summoner_s_Companion.Views
     {
         public FirstRunPage()
         {
-            SaveCommand = new RelayCommand(Save_Execute,Save_CanExecute);
+            SaveCommand = new RelayCommand(x => Save_Execute(), x => Save_CanExecute());
             InitializeComponent();
         }
 
@@ -99,7 +100,15 @@ namespace Summoner_s_Companion.Views
             {
                 Variables.SummonerName = SummonerName;
                 Variables.Region = Region;
-                Variables.Language = Lang;
+                if (Lang != Variables.Language)
+                {
+                    Variables.Language = Lang;
+                    Variables.Champions = null;
+                    await DialogHost.Show(new MessageDialog(
+                        "App needs to be restarted. After you close this dialog, app will restart."));
+                    System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+                    Application.Current.Shutdown();
+                }
                 MainWindow.Instance.Transitioner.SelectedIndex = 0;
             }
         }

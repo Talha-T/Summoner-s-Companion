@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:models="clr-namespace:Summoner_s_Companion.Models"
+             xmlns:converters="clr-namespace:Summoner_s_Companion.Converters"
+             xmlns:requestors="clr-namespace:Summoner_s_Companion.Requestors"
              mc:Ignorable="d" 
              d:DesignHeight="679" d:DesignWidth="1358"
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
@@ -17,7 +19,7 @@
             <RowDefinition Height="64*"/>
         </Grid.RowDefinitions>
         <TextBlock FontSize="50" Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Center">Welcome to <Bold>Summoner's Companion</Bold></TextBlock>
-        <TextBlock FontWeight="Light" FontSize="32" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center">Looks like it is your first run. Get started.</TextBlock>
+        <TextBlock converters:VisibilityHelper.IsVisible="{x:Static requestors:Variables.FirstRun}" FontWeight="Light" FontSize="32" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center">Looks like it is your first run. Get started.</TextBlock>
         <TextBlock FontWeight="Light" FontSize="28" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">We need few data to use as default; you can change them later.</TextBlock>
         <StackPanel Grid.Row="3">
             <TextBox Margin="0,20,0,0" HorizontalAlignment="Center" FontSize="23" materialDesign:HintAssist.Hint="Your Summoner Name" x:Name="SummonerNameTextBox">
@@ -30,8 +32,8 @@
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            <ComboBox Margin="0,20,0,0" SelectionChanged="RegionsComboBox_OnSelectionChanged" x:Name="RegionsComboBox" HorizontalAlignment="Center" FontSize="23" materialDesign:HintAssist.Hint="Your Region" ItemsSource="{Binding Regions}" Text="{Binding Region,UpdateSourceTrigger=PropertyChanged}"></ComboBox>
-            <ComboBox Margin="0,20,0,0" HorizontalAlignment="Center" FontSize="23" materialDesign:HintAssist.Hint="Your Language" ItemsSource="{Binding Languages}" Text="{Binding Lang,UpdateSourceTrigger=PropertyChanged}"></ComboBox>
+            <ComboBox Margin="0,20,0,0" SelectionChanged="RegionsComboBox_OnSelectionChanged" x:Name="RegionsComboBox" HorizontalAlignment="Center" FontSize="23" ItemsSource="{Binding Regions}" Text="{Binding Region,UpdateSourceTrigger=PropertyChanged}"></ComboBox>
+            <ComboBox Margin="0,20,0,0" HorizontalAlignment="Center" FontSize="23" ItemsSource="{Binding Languages}" Text="{Binding Lang,UpdateSourceTrigger=PropertyChanged}"></ComboBox>
             <Button x:Name="SaveButton" Margin="0,20,0,0" HorizontalAlignment="Center" FontSize="25" Height="40" Command="{Binding SaveCommand}">SAVE
             </Button>
             <ProgressBar Visibility="Hidden" x:Name="ProgressBar" IsIndeterminate="True" Style="{DynamicResource MaterialDesignCircularProgressBar}" Margin="0,20,0,0" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">

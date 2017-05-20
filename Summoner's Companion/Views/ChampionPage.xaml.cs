@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Reflection;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using MaterialDesignThemes.Wpf;
 using RiotSharp.StaticDataEndpoint;
+using Summoner_s_Companion.Models;
+using Summoner_s_Companion.Requestors;
 
 namespace Summoner_s_Companion.Views
 {
@@ -17,9 +21,31 @@ namespace Summoner_s_Companion.Views
         {
             InitializeComponent();
             ChampionViewModel.Champion = champion;
-            //ImageScrollViewer.ScrollToVerticalOffset(champion.Image.Y + 48);
-            //ImageScrollViewer.ScrollToHorizontalOffset(champion.Image.X + 48);
+            HideScriptErrors(WebBrowser, true);
+            BrowserBackCommand = new RelayCommand(x => WebBrowser.GoBack(), x => WebBrowser.CanGoBack);
+            BrowserForwardCommand = new RelayCommand(x => WebBrowser.GoForward(), x => WebBrowser.CanGoForward);          
+            WebBrowser.Navigated += WebBrowser_Navigated;
+            if (Variables.FirstRun)
+                ShowBuggyDialog();
+            Loaded += delegate
+            {
+                //Transitioner.SelectedIndex = 0;
+            };
         }
+
+        private async void ShowBuggyDialog()
+        {
+            await DialogHost.Show(new MessageDialog("Builds and counters might be buggy at the moment; also Riot API data might be wrong so some invalid data might appear at spells page. If you see something weird, please tell it to the author."));
+        }
+
+        private void WebBrowser_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+            CommandManager.InvalidateRequerySuggested();
+        }
+
+        public RelayCommand BrowserBackCommand { get; }
+
+        public RelayCommand BrowserForwardCommand { get; }
 
         private void ChampionImageRectangle_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -58,5 +84,21 @@ namespace Summoner_s_Companion.Views
             MainWindow.Instance.RootDialog.IsOpen = false;
             await DialogHost.Show(new MessageDialog(ChampionViewModel.Champion.Blurb));
         }
+
+        public void HideScriptErrors(WebBrowser wb, bool hide)
+        {
+            var fiComWebBrowser =
+                typeof(WebBrowser).GetField("_axIWebBrowser2", BindingFlags.Instance | BindingFlags.NonPublic);
+            if (fiComWebBrowser == null) return;
+            var objComWebBrowser = fiComWebBrowser.GetValue(wb);
+            if (objComWebBrowser == null)
+            {
+                wb.Loaded += (o, s) => HideScriptErrors(wb, hide); //In case we are to early
+                return;
+            }
+            objComWebBrowser.GetType()
+                .InvokeMember("Silent", BindingFlags.SetProperty, null, objComWebBrowser, new object[] {hide});
+        }
+
     }
 }

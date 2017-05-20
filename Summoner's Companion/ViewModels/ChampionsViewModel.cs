@@ -11,7 +11,6 @@ namespace Summoner_s_Companion.ViewModels
 {
     public class ChampionsViewModel : ViewModelBase
     {
-
         public async Task GetChampions()
         {
             var api = StaticRiotApi.GetInstance(Resources.apiKey);
@@ -29,6 +28,7 @@ namespace Summoner_s_Companion.ViewModels
             }
             ChampionsLoaded = true;
         }
+
 
         private List<ChampionStatic> _champions;
 

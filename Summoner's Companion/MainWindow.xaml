@@ -13,7 +13,7 @@
         TextElement.FontSize="14"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         Title="League Companion" WindowStartupLocation="CenterScreen" Width="{Binding Source={x:Static SystemParameters.PrimaryScreenWidth}}"
-        Height="{Binding Source={x:Static SystemParameters.PrimaryScreenHeight}}" WindowState="Maximized" >
+        Height="{Binding Source={x:Static SystemParameters.PrimaryScreenHeight}}" WindowState="Maximized">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -31,7 +31,7 @@
                 <DockPanel>
                     <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
                         <StackPanel>
-                            <Button Content="Settings"/>
+                            <Button Content="Settings" x:Name="SettingsButton" Click="SettingsButton_OnClick"/>
                             <Button Content="About"/>
                             <Separator/>
                             <Button Content="Close"/>
@@ -61,7 +61,10 @@
 
                                 </TabItem>
                                 <TabItem Header="Items">
-
+                                    <views:ItemsView></views:ItemsView>
+                                </TabItem>
+                                <TabItem Header="Ping Check">
+                                    <views:PingCheckView></views:PingCheckView>
                                 </TabItem>
                             </dragablz:TabablzControl>
                         </materialDesign:TransitionerSlide>

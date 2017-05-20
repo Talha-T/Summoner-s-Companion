@@ -1,8 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using MaterialDesignThemes.Wpf;
+using Microsoft.Win32;
 using Summoner_s_Companion.Properties;
 using Summoner_s_Companion.Requestors;
 
@@ -33,12 +35,20 @@ namespace Summoner_s_Companion
             }
             if (!Directory.Exists("Downloads/Splashes"))
                 Directory.CreateDirectory("Downloads/Splashes");
+            var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_BROWSER_EMULATION", true);
+            const string appName = "SummonersCompanion.exe";
+            if (key != null && key.GetValue(appName) == null)
+                key.SetValue(appName, 11001, RegistryValueKind.DWord);
+
+            key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_BROWSER_EMULATION", true);
+            if (key?.GetValue(appName) != null)
+                key.SetValue("YourApplicationName.exe", 11001, RegistryValueKind.DWord);
         }
 
         public static void NavigateTo(UserControl control)
         {
             Instance.Transitioner.Items[1] = control;
-            Instance.Transitioner.SelectedIndex = 1;
+            NavigateToIndex(1);
         }
 
         public static void NavigateToIndex(int index)
@@ -49,6 +59,11 @@ namespace Summoner_s_Companion
         public static async void ShowDialog(object content)
         {
             await DialogHost.Show(content);
+        }
+
+        private void SettingsButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigateToIndex(2);
         }
     }
 }

@@ -48,6 +48,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Dragablz, Version=0.0.3.186, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dragablz.0.0.3.186\lib\net45\Dragablz.dll</HintPath>
@@ -103,10 +112,19 @@
     <Compile Include="Converters\ArrayToStringConverter.cs" />
     <Compile Include="Converters\AttackSpeedConverter.cs" />
     <Compile Include="Converters\ChampionImageConverter.cs" />
+    <Compile Include="Converters\GreaterThanZeroConverter.cs" />
+    <Compile Include="Converters\ItemImageConverter.cs" />
+    <Compile Include="Converters\NameFlatConverter.cs" />
+    <Compile Include="Converters\SkinImageConverter.cs" />
+    <Compile Include="Converters\SpellImageConverter.cs" />
     <Compile Include="Converters\SplashImageConverter.cs" />
     <Compile Include="Converters\VisibilityHelper.cs" />
+    <Compile Include="Converters\WebBrowserHelper.cs" />
     <Compile Include="ImageDialog.xaml.cs">
       <DependentUpon>ImageDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemDialog.xaml.cs">
+      <DependentUpon>ItemDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="MessageDialog.xaml.cs">
       <DependentUpon>MessageDialog.xaml</DependentUpon>
@@ -121,6 +139,7 @@
     <Compile Include="Requestors\Variables.cs" />
     <Compile Include="ViewModels\ChampionsViewModel.cs" />
     <Compile Include="ViewModels\ChampionViewModel.cs" />
+    <Compile Include="ViewModels\ItemsViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\ChampionPage.xaml.cs">
       <DependentUpon>ChampionPage.xaml</DependentUpon>
@@ -131,7 +150,23 @@
     <Compile Include="Views\FirstRunPage.xaml.cs">
       <DependentUpon>FirstRunPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ItemsView.xaml.cs">
+      <DependentUpon>ItemsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PassiveView.xaml.cs">
+      <DependentUpon>PassiveView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PingCheckView.xaml.cs">
+      <DependentUpon>PingCheckView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SpellView.xaml.cs">
+      <DependentUpon>SpellView.xaml</DependentUpon>
+    </Compile>
     <Page Include="ImageDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -163,6 +198,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ItemsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PassiveView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PingCheckView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SpellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -183,6 +234,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

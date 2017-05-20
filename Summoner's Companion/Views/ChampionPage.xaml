@@ -6,6 +6,9 @@
              xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:viewModels="clr-namespace:Summoner_s_Companion.ViewModels"
+             xmlns:converters="clr-namespace:Summoner_s_Companion.Converters"
+             xmlns:views="clr-namespace:Summoner_s_Companion.Views"
+             xmlns:staticDataEndpoint="clr-namespace:RiotSharp.StaticDataEndpoint;assembly=RiotSharp"
              mc:Ignorable="d" 
              d:DesignHeight="606" d:DesignWidth="1347">
     <UserControl.DataContext>
@@ -52,7 +55,7 @@
                         <TextBlock Margin="0,5,0,0" Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="{Binding Champion.Title}"></TextBlock>
                         <TextBlock Margin="0,5,0,0" Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="{Binding Champion.Tags,Converter={StaticResource ArrayToStringConverter}}"></TextBlock>
                     </StackPanel>
-                    <StackPanel Grid.Row="0" Grid.Column="2" Margin="30,80" VerticalAlignment="Top" Orientation="Horizontal">
+                    <StackPanel Grid.Row="0" Grid.Column="2" Margin="15,80" VerticalAlignment="Top" Orientation="Horizontal">
                         <Grid HorizontalAlignment="Left" Width="50" Height="50" ToolTip="Attack">
                             <ProgressBar Height="50" Width="50" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="{Binding Champion.Info.Attack}" Maximum="10.1" x:Name="AttackProgress"></ProgressBar>
                             <TextBlock Text="{Binding ElementName=AttackProgress,Path=Value}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
@@ -72,7 +75,7 @@
                     </StackPanel>
                     <StackPanel Margin="10,70" Grid.Row="0" Grid.Column="3">
                         <Button x:Name="LoreButton" Click="LoreButton_OnClick">LORE</Button>
-                            <Button Margin="0,10" x:Name="BlorbButton" Click="BlorbButton_OnClick">BLORB</Button>
+                            <Button Margin="0,10" x:Name="BlorbButton" Click="BlorbButton_OnClick">BLURB</Button>
                     </StackPanel>
                         <TextBlock Margin="10,70" Grid.Column="4" Grid.Row="0">
                         Uses <Run FontWeight="Bold" Text="{Binding Champion.Partype}"></Run><LineBreak/> to cast spells
@@ -180,24 +183,36 @@
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0" VerticalAlignment="Top" Margin="0,-150,0,0">
-                            <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                                 <StackPanel>
                                     <TextBlock Style="{StaticResource MaterialDesignTitleTextBlock}"
                                                Text="{Binding Path=Champion.Name,StringFormat={}If you are {0}:}"
                                                Padding="5">
                                     </TextBlock>
-                                    <ListBox ItemsSource="{Binding Champion.AllyTips}" Padding="10"></ListBox>
+                                    <ListBox ItemsSource="{Binding Champion.AllyTips}" Padding="10">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding}" TextWrapping="Wrap"></TextBlock>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
                                 </StackPanel>
 
                             </ScrollViewer>
                         </Grid>
                         <Grid Grid.Column="1" VerticalAlignment="Top" Margin="30,-150,0,0">
-                            <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                                 <StackPanel>
                                     <TextBlock Style="{StaticResource MaterialDesignTitleTextBlock}"
                                            Text="{Binding Path=Champion.Name,StringFormat={}If you are playing against {0}:}" Padding="5">
                                     </TextBlock>
-                                    <ListBox ItemsSource="{Binding Champion.EnemyTips}" Padding="10"></ListBox>
+                                    <ListBox ItemsSource="{Binding Champion.EnemyTips}" Padding="10">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding}" TextWrapping="Wrap"></TextBlock>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
 
                                 </StackPanel>
                             </ScrollViewer>
@@ -205,12 +220,52 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Spells"></TabItem>
-            <TabItem Header="Builds"></TabItem>
-            <TabItem Header="Counters"></TabItem>
-            <TabItem Header="Skins"></TabItem>
+            <TabItem Header="Spells">
+                <Grid MaxHeight="606" MaxWidth="1347">
+                    <ScrollViewer>
+                        <StackPanel>
+                            <views:PassiveView Passive="{Binding Champion.Passive}"></views:PassiveView>
+                            <Separator></Separator>
+                            <views:SpellView Spell="{Binding Champion.Spells[0]}" SpellString="Q"></views:SpellView>
+                            <Separator></Separator>
+                            <views:SpellView Spell="{Binding Champion.Spells[1]}" SpellString="W"></views:SpellView>
+                            <Separator></Separator>
+                            <views:SpellView Spell="{Binding Champion.Spells[2]}" SpellString="E"></views:SpellView>
+                            <Separator></Separator>
+                            <views:SpellView Spell="{Binding Champion.Spells[3]}" SpellString="R"></views:SpellView>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Builds &amp; Counters">
+                <Grid>
+                    <WebBrowser converters:WebBrowserHelper.BindableSource="{Binding Champion.Name, StringFormat=https://tr.op.gg/champion/{0}/statistics/mid, Converter={StaticResource NameFlatConverter}}" VerticalAlignment="Top" Height="530" Panel.ZIndex="0" x:Name="WebBrowser"></WebBrowser>
+                    <Button Panel.ZIndex="2500" ToolTip="Web Browser Back" Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl},Path=BrowserBackCommand}" x:Name="BrowserBackButton" Style="{StaticResource MaterialDesignFloatingActionButton}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="16,0,0,16">
+                        <materialDesign:PackIcon Kind="ArrowLeftBold"></materialDesign:PackIcon>
+                    </Button>
+                    <Button Panel.ZIndex="2500" ToolTip="Web Browser Forward" Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl},Path=BrowserForwardCommand}" x:Name="BrowserForwardButton" Style="{StaticResource MaterialDesignFloatingActionButton}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="106,0,0,16">
+                        <materialDesign:PackIcon Kind="ArrowRightBold"></materialDesign:PackIcon>
+                    </Button>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Skins">
+                <materialDesign:Transitioner ItemsSource="{Binding Champion.Skins}" x:Name="Transitioner">
+                    <materialDesign:Transitioner.ItemTemplate>
+                        <DataTemplate DataType="staticDataEndpoint:SkinStatic">
+                            <Image>
+                                <Image.Source>
+                                    <MultiBinding Converter="{StaticResource SkinImageConverter}">
+                                        <Binding ElementName="Transitioner" Path="DataContext.Champion.Name"></Binding>
+                                        <Binding Path="Num"></Binding>
+                                    </MultiBinding>
+                                </Image.Source>
+                            </Image>
+                        </DataTemplate>
+                    </materialDesign:Transitioner.ItemTemplate>
+                </materialDesign:Transitioner>
+            </TabItem>
         </dragablz:TabablzControl>
-        <Button x:Name="BackButton" Style="{StaticResource MaterialDesignFloatingActionButton}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,16,16" Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}">
+        <Button ToolTip="Go To Main Page" x:Name="BackButton" Style="{StaticResource MaterialDesignFloatingActionButton}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,16,16" Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}">
             <materialDesign:PackIcon Kind="ArrowLeftBold"></materialDesign:PackIcon>
         </Button>
     </Grid>
