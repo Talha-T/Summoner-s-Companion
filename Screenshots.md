@@ -17,3 +17,4 @@
 
 ## Items
 ![Items](/img/items.PNG?raw=true)
+![Details](/img/item_details.PNG?raw=true)
