@@ -15,10 +15,9 @@ namespace Summoner_s_Companion
 
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
-            Application.Current.DispatcherUnhandledException += (s, ex) =>
+            AppDomain.CurrentDomain.UnhandledException += (s, ex) =>
             {
-                MessageBox.Show(ex
-                    .Exception.Message);
+                MessageBox.Show(((Exception)ex.ExceptionObject).Message);
             };
             Resources = base.Resources;
             Settings.Default.SettingsLoaded += delegate
