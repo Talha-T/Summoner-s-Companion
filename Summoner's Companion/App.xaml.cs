@@ -15,6 +15,11 @@ namespace Summoner_s_Companion
 
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
+            Application.Current.DispatcherUnhandledException += (s, ex) =>
+            {
+                MessageBox.Show(ex
+                    .Exception.Message);
+            };
             Resources = base.Resources;
             Settings.Default.SettingsLoaded += delegate
             {
@@ -24,7 +29,7 @@ namespace Summoner_s_Companion
 
         public static void SwitchColor()
         {
-            var primarySource = new Uri($"pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.{Variables.Color}.xaml");
+            var primarySource = new Uri($"pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.{Variables.Color ?? "Red"}.xaml");
             Resources.MergedDictionaries[2] = new ResourceDictionary { Source = primarySource };
         }
     }

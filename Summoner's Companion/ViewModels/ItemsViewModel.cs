@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Windows;
 using RiotSharp;
 using RiotSharp.StaticDataEndpoint;
 using Summoner_s_Companion.Models;
@@ -28,16 +30,24 @@ namespace Summoner_s_Companion.ViewModels
 
         private async void LoadItems()
         {
-            if (Variables.Items == null)
+            try
             {
-                var api = StaticRiotApi.GetInstance(Resources.apiKey);
-                Items = Variables.Items = (await api.GetItemsAsync(Variables.Region, ItemData.all, Variables.Language))
-                    .Items.Values
-                    .ToList();
+                if (Variables.Items == null)
+                {
+                    var api = StaticRiotApi.GetInstance(Resources.apiKey);
+                    Items = Variables.Items =
+                        (await api.GetItemsAsync(Variables.Region, ItemData.all, Variables.Language))
+                        .Items.Values
+                        .ToList();
+                }
+                else
+                    Items = Variables.Items;
+                ItemsLoaded = true;
             }
-            else
-                Items = Variables.Items;
-            ItemsLoaded = true;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private bool _itemsLoaded;
