@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
+using Summoner_s_Companion.Properties;
+using Summoner_s_Companion.Requestors;
 
 namespace Summoner_s_Companion
 {
@@ -14,11 +11,21 @@ namespace Summoner_s_Companion
     public partial class App
     {
 
-        private App()
+        public new static ResourceDictionary Resources;
+
+        private void App_OnStartup(object sender, StartupEventArgs e)
         {
             Resources = base.Resources;
+            Settings.Default.SettingsLoaded += delegate
+            {
+                SwitchColor();
+            };
         }
 
-        public new static ResourceDictionary Resources;
+        public static void SwitchColor()
+        {
+            var primarySource = new Uri($"pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.{Variables.Color}.xaml");
+            Resources.MergedDictionaries[2] = new ResourceDictionary { Source = primarySource };
+        }
     }
 }

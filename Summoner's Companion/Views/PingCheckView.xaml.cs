@@ -44,6 +44,35 @@ namespace Summoner_s_Companion.Views
             }
         }
 
+        private int _times = 200;
+
+        public int Times
+        {
+            get => _times;
+            set
+            {
+                _times = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _progress;
+
+        public int Progress
+        {
+            get => _progress;
+            set { _progress = value; OnPropertyChanged(); }
+        }
+
+        private int _totalData;
+
+        public int TotalData
+        {
+            get => _totalData;
+            set { _totalData = value; OnPropertyChanged(); }
+        }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
@@ -54,6 +83,8 @@ namespace Summoner_s_Companion.Views
 
         private async void CheckButton_OnClick(object sender, RoutedEventArgs e)
         {
+            Progress = default(int);
+            TotalData = default(int);
             Ping p = new Ping();
             var region = RegionsComboBox.SelectedItem as Region?;
             if (region == null)
@@ -72,10 +103,12 @@ namespace Summoner_s_Companion.Views
                 return;
             }
             var timeout = 15000;
-            var pings = new PingReply[200];
-            for (int i = 0; i < 200; i++)
+            var pings = new PingReply[Times];
+            for (int i = 0; i < Times; i++)
             {
                 pings[i] = await p.SendPingAsync(address, timeout);
+                TotalData += pings[i].Buffer.Length;
+                Progress++;
             }
             var roundTimes = pings.Select(x => x.RoundtripTime);
             var enumerable = roundTimes as long[] ?? roundTimes.ToArray();
@@ -83,10 +116,10 @@ namespace Summoner_s_Companion.Views
             var minPing = enumerable.Min();
             var averagePing = enumerable.Average();
             var packetLoss = pings.Count(x => x.Status != IPStatus.Success);
-            var packetLossPercentage = (packetLoss / pings.Length) * 100;
+            var packetLossPercentage = packetLoss / (float)pings.Length * 100f;
             PingChecking = false;
             var finalString =
-                $"We checked your ping for {pings.Length} times. Your minimum ping is {minPing}, maximum ping is {maxPing}, average ping is {averagePing}. Your packet loss is {packetLoss}/{pings.Length}; which is equal %{packetLossPercentage}. Good luck in your game.";
+                $"We checked your ping for {pings.Length} times. Your minimum ping is {minPing}, maximum ping is {maxPing}, average ping is {averagePing}. Your packet loss is {packetLoss}/{pings.Length}; which is equal %{packetLossPercentage}. Total used data: {TotalData/1024} kilobytes. {Environment.NewLine} Good luck in your game.";
             await DialogHost.Show(new MessageDialog(finalString));
         }
     }

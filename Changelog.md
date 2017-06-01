@@ -1,5 +1,9 @@
 # Changelog:
 
+## v0.2.5
+* Color Change Support
+* Ping Check Tweaks
+
 ## v0.2.0
 * Ping Check
 * Items

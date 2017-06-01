@@ -26,6 +26,7 @@ namespace Summoner_s_Companion
             {
                 if (Variables.FirstRun)
                     Variables.FirstRun = false;
+                Settings.Default.Save();
             };
             var cmdArgs = Environment.GetCommandLineArgs();
             Settings.Default.Upgrade();

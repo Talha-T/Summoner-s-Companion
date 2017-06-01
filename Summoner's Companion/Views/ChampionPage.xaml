@@ -239,7 +239,7 @@
             </TabItem>
             <TabItem Header="Builds &amp; Counters">
                 <Grid>
-                    <WebBrowser converters:WebBrowserHelper.BindableSource="{Binding Champion.Name, StringFormat=https://tr.op.gg/champion/{0}/statistics/mid, Converter={StaticResource NameFlatConverter}}" VerticalAlignment="Top" Height="530" Panel.ZIndex="0" x:Name="WebBrowser"></WebBrowser>
+                    <WebBrowser converters:WebBrowserHelper.BindableSource="{Binding Champion.Name, StringFormat=https://tr.op.gg/champion/{0}/statistics/mid, Converter={StaticResource NameFlatConverter}}" VerticalAlignment="Top" Height="530" Panel.ZIndex="-5" x:Name="WebBrowser"></WebBrowser>
                     <Button Panel.ZIndex="2500" ToolTip="Web Browser Back" Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl},Path=BrowserBackCommand}" x:Name="BrowserBackButton" Style="{StaticResource MaterialDesignFloatingActionButton}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="16,0,0,16">
                         <materialDesign:PackIcon Kind="ArrowLeftBold"></materialDesign:PackIcon>
                     </Button>
@@ -252,14 +252,16 @@
                 <materialDesign:Transitioner ItemsSource="{Binding Champion.Skins}" x:Name="Transitioner">
                     <materialDesign:Transitioner.ItemTemplate>
                         <DataTemplate DataType="staticDataEndpoint:SkinStatic">
-                            <Image>
-                                <Image.Source>
-                                    <MultiBinding Converter="{StaticResource SkinImageConverter}">
-                                        <Binding ElementName="Transitioner" Path="DataContext.Champion.Name"></Binding>
-                                        <Binding Path="Num"></Binding>
-                                    </MultiBinding>
-                                </Image.Source>
-                            </Image>
+                            <materialDesign:TransitionerSlide>
+                                <Image>
+                                    <Image.Source>
+                                        <MultiBinding Converter="{StaticResource SkinImageConverter}">
+                                            <Binding ElementName="Transitioner" Path="Name"></Binding>
+                                            <Binding Path="Num"></Binding>
+                                        </MultiBinding>
+                                    </Image.Source>
+                                </Image>
+                            </materialDesign:TransitionerSlide>
                         </DataTemplate>
                     </materialDesign:Transitioner.ItemTemplate>
                 </materialDesign:Transitioner>

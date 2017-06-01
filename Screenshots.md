@@ -1,6 +1,6 @@
 # Screenshots:
 
-## v0.2.0
+## v0.2.5
 
 ## Champions
 ![Overview](/img/champions_0.2.0.PNG?raw=true)
@@ -9,10 +9,10 @@
 ![Spells](/img/champion_spells_2.PNG?raw=true)
 
 ## First Run
-![First Run Page](img/firstrun_0.0.7.PNG?raw=true)
+![First Run Page](img/firstrun_0.2.5.PNG?raw=true)
 
 ## Ping Check
-![Checking](/img/pingcheck.PNG?raw=true)
+![Checking](/img/pingcheck_0.2.5.PNG?raw=true)
 ![Checked](/img/pingcheck_checked.PNG?raw=true)
 
 ## Items

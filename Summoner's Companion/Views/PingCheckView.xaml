@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:converters="clr-namespace:Summoner_s_Companion.Converters"
              xmlns:requestors="clr-namespace:Summoner_s_Companion.Requestors"
+             xmlns:models="clr-namespace:Summoner_s_Companion.Models"
              mc:Ignorable="d" 
              d:DesignHeight="606" d:DesignWidth="1347" DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <UserControl.Resources>
@@ -20,10 +21,27 @@
     <Grid>
         <StackPanel VerticalAlignment="Center">
             <TextBlock Text="Ping Check" Style="{StaticResource MaterialDesignDisplay3TextBlock}" HorizontalAlignment="Center"></TextBlock>
-            <TextBlock Margin="0,15,0,0" Text="Check your ping for any region. This might take a while." Style="{StaticResource MaterialDesignTitleTextBlock}" HorizontalAlignment="Center"></TextBlock>
+            <TextBlock Margin="0,15,0,0" Text="Check your ping for any region." Style="{StaticResource MaterialDesignTitleTextBlock}" HorizontalAlignment="Center"></TextBlock>
             <ComboBox SelectedItem="{x:Static requestors:Variables.Region}" x:Name="RegionsComboBox" ItemsSource="{Binding Regions}" HorizontalAlignment="Center" FontSize="15" Margin="0,20"></ComboBox>
             <Button HorizontalAlignment="Center" x:Name="CheckButton" converters:VisibilityHelper.IsCollapsed="{Binding PingChecking}" Click="CheckButton_OnClick">CHECK</Button>
-            <ProgressBar Margin="0,20" IsIndeterminate="True" Width="500" converters:VisibilityHelper.IsVisible="{Binding PingChecking}"></ProgressBar>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBox MinWidth="30">
+                    <TextBox.Text>
+                        <Binding Path="Times" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <models:NumericValidationRule ValidatesOnTargetUpdated="True"></models:NumericValidationRule>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBlock Padding="5"> times</TextBlock>
+            </StackPanel>
+            <StackPanel converters:VisibilityHelper.IsVisible="{Binding PingChecking}">
+                <ProgressBar Margin="0,20" Maximum="{Binding Times}" Value="{Binding Progress}" Width="500"></ProgressBar>
+                <TextBlock Panel.ZIndex="2" HorizontalAlignment="Center">
+                    <Run Text="{Binding Progress}"></Run> / <Run Text="{Binding Times}"></Run> <Run Text="{Binding TotalData}"></Run> bytes 
+                </TextBlock>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

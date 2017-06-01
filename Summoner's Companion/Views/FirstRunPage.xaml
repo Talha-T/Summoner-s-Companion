@@ -32,10 +32,22 @@
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            <ComboBox Margin="0,20,0,0" SelectionChanged="RegionsComboBox_OnSelectionChanged" x:Name="RegionsComboBox" HorizontalAlignment="Center" FontSize="23" ItemsSource="{Binding Regions}" Text="{Binding Region,UpdateSourceTrigger=PropertyChanged}"></ComboBox>
-            <ComboBox Margin="0,20,0,0" HorizontalAlignment="Center" FontSize="23" ItemsSource="{Binding Languages}" Text="{Binding Lang,UpdateSourceTrigger=PropertyChanged}"></ComboBox>
-            <Button x:Name="SaveButton" Margin="0,20,0,0" HorizontalAlignment="Center" FontSize="25" Height="40" Command="{Binding SaveCommand}">SAVE
-            </Button>
+            <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" Orientation="Horizontal">
+                <ComboBox SelectionChanged="RegionsComboBox_OnSelectionChanged" x:Name="RegionsComboBox" HorizontalAlignment="Center" FontSize="23" ItemsSource="{Binding Regions}" Text="{Binding Region,UpdateSourceTrigger=PropertyChanged}"></ComboBox>
+                <ComboBox Margin="20,0,0,0" FontSize="23" ItemsSource="{Binding Languages}" Text="{Binding Lang,UpdateSourceTrigger=PropertyChanged}"></ComboBox>
+            </StackPanel>
+            <ListBox x:Name="Colors"  Margin="0,15,0,0" HorizontalAlignment="Center" >
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"></StackPanel>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <Button Click="ColorButton_OnClick" Background="#F44336" BorderBrush="#F44336" Tag="Red"></Button>
+                <Button Click="ColorButton_OnClick" Background="#673AB7" BorderBrush="#673AB7" Tag="DeepPurple"></Button>
+                <Button Click="ColorButton_OnClick" Background="#2196F3" BorderBrush="#2196F3" Tag="Blue"></Button>
+                <Button Click="ColorButton_OnClick" Background="#FFC107" BorderBrush="#FFC107" Tag="Amber"></Button>
+            </ListBox>
+            <Button x:Name="SaveButton" Margin="0,20,0,0" HorizontalAlignment="Center" FontSize="25" Height="40" Command="{Binding SaveCommand}">SAVE</Button>
             <ProgressBar Visibility="Hidden" x:Name="ProgressBar" IsIndeterminate="True" Style="{DynamicResource MaterialDesignCircularProgressBar}" Margin="0,20,0,0" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                 <ProgressBar.RenderTransform>
                     <TransformGroup>

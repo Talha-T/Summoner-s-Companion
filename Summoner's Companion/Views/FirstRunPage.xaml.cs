@@ -130,5 +130,14 @@ namespace Summoner_s_Companion.Views
         }
 
         public ICommand SaveCommand { get; }
+
+        private void ColorButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var tag = (string) ((Button) sender).Tag;
+            //pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Red.xaml
+            Variables.Color = tag;
+            App.SwitchColor();
+            Colors.SelectedItem = (Button) sender;
+        }
     }
 }
