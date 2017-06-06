@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Windows;
 using RiotSharp;
 using RiotSharp.StaticDataEndpoint;
@@ -22,7 +21,6 @@ namespace Summoner_s_Companion.ViewModels
         public ItemsViewModel()
         {
             LoadItems();
-            SortBySortMode();
             SearchCommand = new RelayCommand(x => Items = Variables.Items.Where(y => y.Name != null && y.Name.ToLower().Contains(x.ToString().ToLower())).ToList());
         }
 
@@ -42,6 +40,7 @@ namespace Summoner_s_Companion.ViewModels
                 }
                 else
                     Items = Variables.Items;
+                SortBySortMode();
                 ItemsLoaded = true;
             }
             catch (Exception ex)
@@ -73,9 +72,11 @@ namespace Summoner_s_Companion.ViewModels
 
         private void SortBySortMode()
         {
+            Items.RemoveAll(x => x?.Name == null || x.Gold == null);
             Items = Items.OrderBy(x => SortMode == "Name"
-                ? x.Name
-                : x.Gold.TotalPrice.ToString()).ToList();
+                    ? x.Name
+                    : x.Gold.TotalPrice.ToString())
+                .ToList();
             //OnPropertyChanged(nameof(Items));
         }
         

@@ -5,17 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:staticDataEndpoint="clr-namespace:RiotSharp.StaticDataEndpoint;assembly=RiotSharp"
              xmlns:converters="clr-namespace:Summoner_s_Companion.Converters"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="250" Padding="25" d:DesignWidth="300" DataContext="{Binding RelativeSource={RelativeSource Self},Path=Item,UpdateSourceTrigger=PropertyChanged}" x:Name="Root">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
           <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"></RowDefinition>
               <RowDefinition Height="Auto"></RowDefinition>
               <RowDefinition Height="Auto"></RowDefinition>
               <RowDefinition Height="Auto"></RowDefinition>
@@ -95,5 +98,6 @@
                 </StackPanel>
             </ScrollViewer>
         </Grid>
+        <Button Grid.Row="3" Style="{StaticResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" HorizontalAlignment="Center">CLOSE</Button>
     </Grid>
 </UserControl>

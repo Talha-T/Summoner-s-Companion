@@ -249,7 +249,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Skins">
-                <materialDesign:Transitioner ItemsSource="{Binding Champion.Skins}" x:Name="Transitioner">
+                <materialDesign:Transitioner x:Name="Transitioner" SelectedIndex="0">
                     <materialDesign:Transitioner.ItemTemplate>
                         <DataTemplate DataType="staticDataEndpoint:SkinStatic">
                             <materialDesign:TransitionerSlide>

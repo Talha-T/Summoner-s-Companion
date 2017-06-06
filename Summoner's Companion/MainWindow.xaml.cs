@@ -66,5 +66,10 @@ namespace Summoner_s_Companion
         {
             NavigateToIndex(2);
         }
+
+        private async void AboutButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            await DialogHost.Show(new MessageDialog("This app is in progress. Stuff will be added in future."));
+        }
     }
 }

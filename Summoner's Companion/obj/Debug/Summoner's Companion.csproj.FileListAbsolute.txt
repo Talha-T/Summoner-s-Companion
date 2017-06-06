@@ -62,3 +62,5 @@ C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companio
 C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\Views\ItemsView.baml
 C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\ItemDialog.baml
 C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\ItemDialog.g.cs
+C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\Views\SummonerView.baml
+C:\Users\seher\onedrive\belgeler\visual studio 2017\Projects\Summoner's Companion\Summoner's Companion\obj\Debug\Views\SummonerView.g.cs

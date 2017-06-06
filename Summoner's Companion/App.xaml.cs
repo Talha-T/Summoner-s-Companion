@@ -17,7 +17,7 @@ namespace Summoner_s_Companion
         {
             AppDomain.CurrentDomain.UnhandledException += (s, ex) =>
             {
-                MessageBox.Show(((Exception)ex.ExceptionObject).Message);
+                MessageBox.Show("An exception occurred: " + ((Exception)ex.ExceptionObject).Message + " Stacktrace: " + ((Exception)ex.ExceptionObject).StackTrace);
             };
             Resources = base.Resources;
             Settings.Default.SettingsLoaded += delegate

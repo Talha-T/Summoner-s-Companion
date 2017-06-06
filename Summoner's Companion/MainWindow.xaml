@@ -32,9 +32,7 @@
                     <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
                         <StackPanel>
                             <Button Content="Settings" x:Name="SettingsButton" Click="SettingsButton_OnClick"/>
-                            <Button Content="About"/>
-                            <Separator/>
-                            <Button Content="Close"/>
+                            <Button Content="About" Click="AboutButton_OnClick"/>
                         </StackPanel>
                     </materialDesign:PopupBox>
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22">Summoner's Companion</TextBlock>
@@ -53,12 +51,10 @@
                             </materialDesign:TransitionerSlide.BackwardWipe>
                             <dragablz:TabablzControl>
                                 <TabItem Header="Summoners">
+                                    <views:SummonerView></views:SummonerView>
                                 </TabItem>
                                 <TabItem Header="Champions">
                                     <views:ChampionsPage></views:ChampionsPage>
-                                </TabItem>
-                                <TabItem Header="Runes &amp; Masteries">
-
                                 </TabItem>
                                 <TabItem Header="Items">
                                     <views:ItemsView></views:ItemsView>
@@ -86,6 +82,6 @@
                                          Grid.Row="1" />
             </Grid>
         </DockPanel>
-        <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding ElementName=MainSnackbar,Path=MessageQueue}" x:Name="RootDialog" CloseOnClickAway="True"></materialDesign:DialogHost>
+        <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding ElementName=MainSnackbar,Path=MessageQueue}" x:Name="RootDialog" CloseOnClickAway="False"></materialDesign:DialogHost>
     </Grid>
 </Window>

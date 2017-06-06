@@ -25,6 +25,7 @@
             <converters:SkinImageConverter x:Key="SkinImageConverter"></converters:SkinImageConverter>
             <converters:ItemImageConverter x:Key="ItemImageConverter"></converters:ItemImageConverter>
             <converters:GreaterThanZeroConverter x:Key="GreaterThanZeroConverter"></converters:GreaterThanZeroConverter>
+            <converters:SummonerIconConverter x:Key="SummonerIconConverter"></converters:SummonerIconConverter>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

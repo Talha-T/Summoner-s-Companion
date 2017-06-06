@@ -88,14 +88,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SummonersCompanion.exe" size="127968">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SummonersCompanion.exe" size="138208">
       <assemblyIdentity name="SummonersCompanion" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>6c4a9aWv8yhsg2TJaCxssDP4XgjPSREMgiU0RJ6FeAU=</dsig:DigestValue>
+        <dsig:DigestValue>FpzLqFNt2p4hG3oUh0SpDp7janzdySD5y4Uoxkjm2TU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

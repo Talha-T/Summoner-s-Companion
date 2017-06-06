@@ -27,10 +27,6 @@ namespace Summoner_s_Companion.Views
             WebBrowser.Navigated += WebBrowser_Navigated;
             if (Variables.FirstRun)
                 ShowBuggyDialog();
-            Loaded += delegate
-            {
-                //Transitioner.SelectedIndex = 0;
-            };
         }
 
         private async void ShowBuggyDialog()
