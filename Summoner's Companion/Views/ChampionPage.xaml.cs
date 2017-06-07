@@ -31,7 +31,7 @@ namespace Summoner_s_Companion.Views
 
         private async void ShowBuggyDialog()
         {
-            await DialogHost.Show(new MessageDialog("Builds and counters might be buggy at the moment; also Riot API data might be wrong so some invalid data might appear at spells page. If you see something weird, please tell it to the author."));
+            await DialogHost.Show(new MessageDialog("Before going back from Builds and Counters page, switch to another tab and go back; it is a known bug. Also Riot API data might be wrong so some invalid data might appear at spells page. If you see something weird, please tell it to the author."));
         }
 
         private void WebBrowser_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)

@@ -9,6 +9,7 @@ using System.Windows;
 using MaterialDesignThemes.Wpf;
 using RiotSharp;
 using Summoner_s_Companion.Annotations;
+using Summoner_s_Companion.Requestors;
 
 namespace Summoner_s_Companion.Views
 {
@@ -20,6 +21,7 @@ namespace Summoner_s_Companion.Views
         public PingCheckView()
         {
             InitializeComponent();
+            RegionsComboBox.SelectedIndex = Regions.IndexOf(Variables.Region);
         }
 
         public List<Region> Regions

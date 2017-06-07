@@ -95,6 +95,13 @@
                     <system:String>Name</system:String>
                     <system:String>Price</system:String>
                 </ComboBox>
+                <TextBlock VerticalAlignment="Center"  Style="{StaticResource MaterialDesignSubheadingTextBlock}" Margin="15,0,0,0">Filter</TextBlock>
+                <ComboBox VerticalAlignment="Center" materialDesign:HintAssist.Hint="filter" SelectedItem="{Binding Filter,Mode=TwoWay}" SelectionChanged="ComboBox_SelectionChanged" Margin="15,0">
+                    <system:String>Summoner's Rift</system:String>
+                    <system:String>Howling Abyss</system:String>
+                    <system:String>Twisted Treeline</system:String>
+                    <system:String>All</system:String>
+                </ComboBox>
             </StackPanel>
         </materialDesign:ColorZone>
     </Grid>

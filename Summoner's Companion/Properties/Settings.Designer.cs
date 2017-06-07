@@ -106,5 +106,17 @@ namespace Summoner_s_Companion.Properties {
                 this["Color"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("7.11.1")]
+        public string Patch {
+            get {
+                return ((string)(this["Patch"]));
+            }
+            set {
+                this["Patch"] = value;
+            }
+        }
     }
 }

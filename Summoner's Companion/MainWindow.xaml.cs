@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
+using RiotSharp;
 using Summoner_s_Companion.Properties;
 using Summoner_s_Companion.Requestors;
 
@@ -33,6 +34,16 @@ namespace Summoner_s_Companion
             if (Variables.FirstRun || cmdArgs.Contains("firstrun"))
             {
                 Transitioner.SelectedIndex = 2;
+            }
+            if (cmdArgs.Contains("update"))
+            {
+                Variables.Items = null;
+                Variables.Champions = null;
+                var versions = StaticRiotApi.GetInstance(Variables.ApiKey).GetVersionsAsync(Variables.Region).GetAwaiter().GetResult();
+                Variables.Patch = versions[0];
+                // ReSharper disable once AssignNullToNotNullAttribute
+                System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+                Application.Current.Shutdown();
             }
             if (!Directory.Exists("Downloads/Splashes"))
                 Directory.CreateDirectory("Downloads/Splashes");

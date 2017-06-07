@@ -75,13 +75,24 @@ namespace Summoner_s_Companion.Requestors
                 Save();
             }
         }
-    
+
         public static string Color
         {
             get => Default.Color;
-            set { Default.Color = value; Save(); }
+            set
+            {
+                Default.Color = value;
+                Save();
+            }
         }
 
+        public static string Patch
+        {
+            get => Default.Patch;
+            set { Default.Patch = value;
+                Save();
+            }
+        }
 
         private static void Save()
         {

@@ -23,5 +23,8 @@
     <Setting Name="Color" Type="System.String" Scope="User">
       <Value Profile="(Default)">Red</Value>
     </Setting>
+    <Setting Name="Patch" Type="System.String" Scope="User">
+      <Value Profile="(Default)">7.11.1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

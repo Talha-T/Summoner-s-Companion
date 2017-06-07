@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
-using RiotSharp;
+using MaterialDesignThemes.Wpf;
 using Summoner_s_Companion.Models;
 using Summoner_s_Companion.Requestors;
 
@@ -18,6 +18,10 @@ namespace Summoner_s_Companion.Views
             InitializeComponent();
             SearchBox.TextChanged += SearchBox_TextChanged;
             ToggleProgress(false);
+            if (Variables.FirstRun)
+            {
+                DialogHost.Show(new MessageDialog("This page is not fully implemented yet. Check out others.")).GetAwaiter().GetResult();
+            }
         }
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)

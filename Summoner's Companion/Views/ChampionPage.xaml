@@ -55,7 +55,7 @@
                         <TextBlock Margin="0,5,0,0" Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="{Binding Champion.Title}"></TextBlock>
                         <TextBlock Margin="0,5,0,0" Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="{Binding Champion.Tags,Converter={StaticResource ArrayToStringConverter}}"></TextBlock>
                     </StackPanel>
-                    <StackPanel Grid.Row="0" Grid.Column="2" Margin="15,80" VerticalAlignment="Top" Orientation="Horizontal">
+                    <StackPanel Grid.Row="0" Grid.Column="2" Margin="5,80" VerticalAlignment="Top" Orientation="Horizontal">
                         <Grid HorizontalAlignment="Left" Width="50" Height="50" ToolTip="Attack">
                             <ProgressBar Height="50" Width="50" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="{Binding Champion.Info.Attack}" Maximum="10.1" x:Name="AttackProgress"></ProgressBar>
                             <TextBlock Text="{Binding ElementName=AttackProgress,Path=Value}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
@@ -239,7 +239,7 @@
             </TabItem>
             <TabItem Header="Builds &amp; Counters">
                 <Grid>
-                    <WebBrowser converters:WebBrowserHelper.BindableSource="{Binding Champion.Name, StringFormat=https://tr.op.gg/champion/{0}/statistics/mid, Converter={StaticResource NameFlatConverter}}" VerticalAlignment="Top" Height="530" Panel.ZIndex="-5" x:Name="WebBrowser"></WebBrowser>
+                    <WebBrowser converters:WebBrowserHelper.BindableSource="{Binding Champion.Name, StringFormat=https://tr.op.gg/champion/{0}/statistics, Converter={StaticResource NameFlatConverter}}" VerticalAlignment="Top" Height="530" Panel.ZIndex="-5" x:Name="WebBrowser"></WebBrowser>
                     <Button Panel.ZIndex="2500" ToolTip="Web Browser Back" Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl},Path=BrowserBackCommand}" x:Name="BrowserBackButton" Style="{StaticResource MaterialDesignFloatingActionButton}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="16,0,0,16">
                         <materialDesign:PackIcon Kind="ArrowLeftBold"></materialDesign:PackIcon>
                     </Button>

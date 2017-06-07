@@ -24,10 +24,8 @@
               <RowDefinition Height="Auto"></RowDefinition>
           </Grid.RowDefinitions>
         <TextBlock MaxWidth="400" Text="{Binding Name}" Padding="15,20" Style="{StaticResource MaterialDesignDisplay1TextBlock}" TextWrapping="Wrap"></TextBlock>
-        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.Row="1">
-            <TextBlock MaxWidth="400" Padding="5" Style="{StaticResource MaterialDesignBody1TextBlock}"
-                       Text="{Binding SanitizedDescription}"></TextBlock>
-        </ScrollViewer>
+        <TextBlock ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="1" MaxWidth="400" Padding="5" Style="{StaticResource MaterialDesignBody1TextBlock}"
+                       Text="{Binding SanitizedDescription}" TextWrapping="Wrap"></TextBlock>
         <Grid MaxHeight="350" Grid.Row="2">
             <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">

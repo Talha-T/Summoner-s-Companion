@@ -70,14 +70,34 @@ namespace Summoner_s_Companion.ViewModels
             }
         }
 
+        private string _filter = "All";
+
+        public string Filter
+        {
+            get => _filter;
+            set
+            {
+                _filter = value;
+                OnPropertyChanged();
+                FilterItems();
+            }
+        }
+
+
         private void SortBySortMode()
         {
             Items.RemoveAll(x => x?.Name == null || x.Gold == null);
             Items = Items.OrderBy(x => SortMode == "Name"
                     ? x.Name
-                    : x.Gold.TotalPrice.ToString())
+                    : x.Gold.TotalPrice.ToString()).Distinct()
                 .ToList();
             //OnPropertyChanged(nameof(Items));
+        }
+
+        private void FilterItems()
+        {
+            Items = Variables.Items.Where(x => Filter == "Summoner's Rift" ? x.Maps["11"] : Filter == "Twisted Treeline" ? x.Maps["10"] : Filter == "Howling Abyss" ? x.Maps["12"] : true).ToList();
+            SortBySortMode();
         }
         
     }

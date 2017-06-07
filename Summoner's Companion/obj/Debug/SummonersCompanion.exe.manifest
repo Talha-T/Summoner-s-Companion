@@ -88,14 +88,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SummonersCompanion.exe" size="138208">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SummonersCompanion.exe" size="139744">
       <assemblyIdentity name="SummonersCompanion" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>FpzLqFNt2p4hG3oUh0SpDp7janzdySD5y4Uoxkjm2TU=</dsig:DigestValue>
+        <dsig:DigestValue>jLx+UdOOKn/vQ2rivBARDnD2lhVMw0NvCOcwGX76/Aw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -159,13 +159,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="SummonersCompanion.exe.config" size="2086">
+  <file name="SummonersCompanion.exe.config" size="2186">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>q0KHiRqe/x52AiJiJXq9vCRbcUQ6FKb3NoF92CS8omA=</dsig:DigestValue>
+      <dsig:DigestValue>Wgt50XMFEHmaHUTGiAtfly4xoXxk4t3b0VKgHcqTTC8=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
