@@ -33,7 +33,8 @@ namespace Summoner_s_Companion
             Settings.Default.Upgrade();
             if (Variables.FirstRun || cmdArgs.Contains("firstrun"))
             {
-                Loaded += (s, e) =>
+                
+                SummonerView.Loaded += (s, e) =>
                 {
                     ShowDialog();
                 };

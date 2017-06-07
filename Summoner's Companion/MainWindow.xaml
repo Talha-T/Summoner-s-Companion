@@ -51,7 +51,7 @@
                             </materialDesign:TransitionerSlide.BackwardWipe>
                             <dragablz:TabablzControl>
                                 <TabItem Header="Summoners">
-                                    <views:SummonerView></views:SummonerView>
+                                    <views:SummonerView x:Name="SummonerView"></views:SummonerView>
                                 </TabItem>
                                 <TabItem Header="Champions">
                                     <views:ChampionsPage></views:ChampionsPage>
