@@ -33,6 +33,10 @@ namespace Summoner_s_Companion
             Settings.Default.Upgrade();
             if (Variables.FirstRun || cmdArgs.Contains("firstrun"))
             {
+                Loaded += (s, e) =>
+                {
+                    ShowDialog();
+                };
                 Transitioner.SelectedIndex = 2;
             }
             if (cmdArgs.Contains("update"))
@@ -45,6 +49,7 @@ namespace Summoner_s_Companion
                 System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
                 Application.Current.Shutdown();
             }
+
             if (!Directory.Exists("Downloads/Splashes"))
                 Directory.CreateDirectory("Downloads/Splashes");
             var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_BROWSER_EMULATION", true);
@@ -55,6 +60,11 @@ namespace Summoner_s_Companion
             key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_BROWSER_EMULATION", true);
             if (key?.GetValue(appName) != null)
                 key.SetValue("YourApplicationName.exe", 11001, RegistryValueKind.DWord);
+        }
+
+        private async void ShowDialog()
+        {
+            await DialogHost.Show(new MessageDialog("This page is not fully implemented yet. Check out others."));
         }
 
         public static void NavigateTo(UserControl control)

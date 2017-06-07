@@ -18,14 +18,9 @@ namespace Summoner_s_Companion.Views
             InitializeComponent();
             SearchBox.TextChanged += SearchBox_TextChanged;
             ToggleProgress(false);
-            if (Variables.FirstRun)
-                ShowDialog();
         }
 
-        private async void ShowDialog()
-        {
-            await DialogHost.Show(new MessageDialog("This page is not fully implemented yet. Check out others."));
-        }
+        
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
